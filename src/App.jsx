@@ -6,73 +6,65 @@ import axios from "axios";
 import { useEffect, useState } from 'react';
 
 
-const rawData = [
-  {
-      movieId: "989",
-      movieTitle: "Maze Runner Death Cure",
-      yearMade: 2015,
-      lengthMovie: 128,
-      language: "English",
-      dateRelease: "9/12/2015",
-      countryReleased: "UK",
-      director: "Duffer Brothers",
-      starring: "Newt",
-      genre: "Sci-Fi",
-      rating: "Rigthy Sock",
-      score: "8 stars"
-  },
-  {
-      movieId: "23",
-      movieTitle: "Maze Runner Kill Order",
-      yearMade: 2017,
-      lengthMovie: 138,
-      language: "English",
-      dateRelease: "9/12/2017",
-      countryReleased: "UK",
-      director: "Rufo Brothers",
-      starring: " Thomas Broodie Sangster",
-      genre: "Sci-Fi",
-      rating: "Rigthy Sock",
-      score: "10 stars"
-  },
-  {
-    movieId: "73",
-    movieTitle: "Maze Runner Kill Order",
-    yearMade: 2017,
-    lengthMovie: 138,
-    language: "English",
-    dateRelease: "9/12/2017",
-    countryReleased: "UK",
-    director: "Rufo Brothers",
-    starring: " Thomas Broodie Sangster",
-    genre: "Sci-Fi",
-    rating: "Rigthy Sock",
-    score: "10 stars"
-}
-]
-
-var cors = require('cors');
-const corsOptions ={
-  origin:'http://localhost:8003/movies', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}
-App.use(cors(corsOptions));
+// const rawData = [
+//   {
+//       movieId: "989",
+//       movieTitle: "Maze Runner Death Cure",
+//       yearMade: 2015,
+//       lengthMovie: 128,
+//       language: "English",
+//       dateRelease: "9/12/2015",
+//       countryReleased: "UK",
+//       director: "Duffer Brothers",
+//       starring: "Newt",
+//       genre: "Sci-Fi",
+//       rating: "Rigthy Sock",
+//       score: "8 stars"
+//   },
+//   {
+//       movieId: "23",
+//       movieTitle: "Maze Runner Kill Order",
+//       yearMade: 2017,
+//       lengthMovie: 138,
+//       language: "English",
+//       dateRelease: "9/12/2017",
+//       countryReleased: "UK",
+//       director: "Rufo Brothers",
+//       starring: " Thomas Broodie Sangster",
+//       genre: "Sci-Fi",
+//       rating: "Rigthy Sock",
+//       score: "10 stars"
+//   },
+//   {
+//     movieId: "73",
+//     movieTitle: "Maze Runner Kill Order",
+//     yearMade: 2017,
+//     lengthMovie: 138,
+//     language: "English",
+//     dateRelease: "9/12/2017",
+//     countryReleased: "UK",
+//     director: "Rufo Brothers",
+//     starring: " Thomas Broodie Sangster",
+//     genre: "Sci-Fi",
+//     rating: "Rigthy Sock",
+//     score: "10 stars"
+// }
+// ]
 
 function App() {
-  const [movies, setMovies] = useState([])
+  const [movie, setMovies] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:8003/movies').then((response) =>{
-      setMovies(response.data)
+    axios.get('http://127.0.0.1:8000/movies').then((response) =>{
+      setMovies(response.data.data);
     })
-   console.log(movies)
-  }, [])
+  }, [movie])
+
   return (
     <Router>
       <Routes>
-        <Route exact path='/' element={<DataTable data={rawData}/>} />
-        <Route exact path='/movieDetails/:id' element={<MovieDetails data={rawData}/>} />
+        <Route exact path='/' element={<DataTable data={movie}/>} />
+        <Route exact path='/movieDetails/:id' element={<MovieDetails data={movie}/>} />
       </Routes>
     </Router>
   );

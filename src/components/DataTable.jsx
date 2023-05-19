@@ -20,14 +20,14 @@ export default function DataTable({data}){
                 </thead>
                 <tbody>
                 {data.map((rowData) => (
-                    <tr key={rowData.movieId}>
-                    <td>{rowData.movieId}</td>
-                    <td>{rowData.movieTitle}</td>
-                    <td>{rowData.yearMade}</td>
-                    <td>{rowData.lengthMovie}</td>
-                    <td>{rowData.language}</td>
-                    <td>{rowData.dateRelease}</td>
-                    <td>{rowData.countryReleased}</td>
+                    <tr key={rowData.mov_id}>
+                    <td>{rowData.mov_id}</td>
+                    <td>{rowData.mov_title}</td>
+                    <td>{rowData.mov_year}</td>
+                    <td>{rowData.mov_time}</td>
+                    <td>{rowData.mov_lang}</td>
+                    <td>{rowData.mov_dt_rel}</td>
+                    <td>{rowData.mov_rel_country}</td>
                     <td>
                         <button onClick={() => {
                             navigate(`/movieDetails/${rowData.movieId}`)
@@ -39,7 +39,6 @@ export default function DataTable({data}){
                 ))}
                 </tbody>
             </table>
-           
         </>
     );
 }
