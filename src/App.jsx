@@ -58,13 +58,14 @@ function App() {
     axios.get('http://127.0.0.1:8000/movies').then((response) =>{
       setMovies(response.data.data);
     })
+    
   }, [movie])
 
   return (
     <Router>
       <Routes>
         <Route exact path='/' element={<DataTable data={movie}/>} />
-        <Route exact path='/movieDetails/:id' element={<MovieDetails data={movie}/>} />
+        <Route exact path='/movieDetails/:id' element={<MovieDetails/>} />
       </Routes>
     </Router>
   );

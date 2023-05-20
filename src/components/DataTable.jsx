@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function DataTable({data}){
     let navigate = useNavigate();
+    
     return (
         <>
             <h1>Movies R Us Movie Database</h1>
@@ -30,7 +31,7 @@ export default function DataTable({data}){
                     <td>{rowData.mov_rel_country}</td>
                     <td>
                         <button onClick={() => {
-                            navigate(`/movieDetails/${rowData.movieId}`)
+                            navigate(`/movieDetails/${rowData.mov_id}`)
                         }}>
                         More Details
                         </button>
